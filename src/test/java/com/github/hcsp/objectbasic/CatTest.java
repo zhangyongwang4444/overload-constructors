@@ -1,25 +1,29 @@
-
 package com.github.hcsp.objectbasic;
-org.junit.jupiter.api.Test;;com.github.hcsp.test.helper.JavaASTReader;
 
-class CatTest {
-@Test
-public void constructorIsCallable() {
-    String name = UUID.randomUUID().toString();
-    Cat cat = new Cat(name);
+import com.github.hcsp.test.helper.JavaASTReader;
+import com.github.javaparser.ast.stmt.ExplicitConstructorInvocationStmt;
+import java.io.FileNotFoundException;
+import java.util.UUID;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-    assertEquals(name, cat.name);
-    assertEquals(1, cat.age);
-    assertTrue(cat.cute);
+public class CatTest {
+    @Test
+    public void constructorIsCallable() {
+        String name = UUID.randomUUID().toString();
+        Cat cat = new Cat(name);
 
-    cat = new Cat(name, 2);
-    assertEquals(2, cat.age);
-    assertTrue(cat.cute);
-}
+        Assertions.assertEquals(name, cat.name);
+        Assertions.assertEquals(1, cat.age);
+        Assertions.assertTrue(cat.cute);
 
-@Test
-public void hasConstructorInvocationStatement() throws FileNotFoundException {
-  com.github.hcsp.test.helper.JavaASTReader.assertContains(Cat.class, com.github.javaparser.ast.stmt.ExplicitConstructorInvocationStmt.class);
-}
+        cat = new Cat(name, 2);
+        Assertions.assertEquals(2, cat.age);
+        Assertions.assertTrue(cat.cute);
+    }
 
+    @Test
+    public void hasConstructorInvocationStatement() throws FileNotFoundException {
+        JavaASTReader.assertContains(Cat.class, ExplicitConstructorInvocationStmt.class);
+    }
 }
