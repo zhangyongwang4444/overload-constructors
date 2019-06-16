@@ -19,7 +19,7 @@ public class Cat {
      */
     public Cat(String name) {
         // 请在这里使用this()调用其他的构造器
-        this("mimi", 1, true);
+        this(name, 1);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Cat {
      */
     public Cat(String name, int age) {
         // 请在这里使用this()调用其他的构造器
-        this("mimi2", 2, true);
+        this(name, age, true);
     }
 
     /**
