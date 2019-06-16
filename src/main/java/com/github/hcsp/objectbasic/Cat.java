@@ -19,7 +19,7 @@ public class Cat {
      */
     public Cat(String name) {
         // 请在这里使用this()调用其他的构造器
-        this(name, 1);
+        this(name, 1,true);
     }
 
     /**
